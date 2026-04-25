@@ -1,0 +1,694 @@
+/* 1. Global Reset & Body Setup */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Arial Black', 'Arial Bold', sans-serif; 
+}
+
+:root {
+    --navy: #083388;       /* Construction Blue */
+    --dark-blue: #001f5c;
+    --red: #e30613;        /* Alert Red */
+    --white: #ffffff;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #f8f9fa;
+}
+
+body { 
+   
+}
+
+/* 2. Full-Screen Container */
+.flyer-container {
+    width: 100vw;
+    height: 100vh;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Scrollable for small screens */
+}
+/* 4. Centered Header (Logo at side of text) */
+header { 
+    position: relative; 
+    z-index: 2; 
+    padding: 4vh 5vw 1vh 5vw; 
+    width: 100%;
+}
+
+.logo-area { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.mg-symbol {
+    width: clamp(70px, 11vh, 130px);
+    height: clamp(70px, 11vh, 130px);
+    border: 4px solid var(--navy);
+    border-radius: 50%; 
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.mg-symbol img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-text {
+    text-align: left;
+}
+
+.logo-text h1 { 
+    color: var(--navy); 
+    font-size: clamp(24px, 5vh, 55px); 
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+/* Small Mobile: Screens smaller than 480px */
+@media (max-width: 480px) {
+    .logo-text h1 {
+        color: #f0efef; /* Black */
+    }
+}
+
+.sub-logo {
+    color: var(--red);
+    font-size: clamp(12px, 1.8vh, 18px);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.slogan {
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    font-size: clamp(10px, 1.4vh, 15px);
+    color: #333;
+}
+
+/* 5. Hero Headline Section */
+.hero-text {
+    text-align: left;
+    
+}
+
+.hero-text h2 {
+    font-size: clamp(32px, 8.5vh, 40px);
+    font-style: italic;
+    color: var(--navy);
+    line-height: 0.82; /* Very tight spacing like the image */
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.white-stroke {
+    color: var(--red);
+    /* Creates the white outline effect on "VALUE" */
+    text-shadow: 
+        -1.5px -1.5px 0 #fff,  
+         1.5px -1.5px 0 #fff,
+        -1.5px  1.5px 0 #fff,
+         1.5px  1.5px 0 #fff;
+}
+
+/* Default color (Desktop/Laptop) */
+.hero-text h2 {
+    color: var(--navy);
+}
+
+/* Mobile: Screens smaller than 768px */
+@media (max-width: 768px) {
+    .hero-text h2 {
+        color: var(--red);
+    }
+}
+
+/* Small Mobile: Screens smaller than 480px */
+@media (max-width: 480px) {
+    .hero-text h2 {
+        color: #f0efef; /* Black */
+    }
+}
+/* 6. Main Content Grid */
+.content-grid { 
+    flex-grow: 1; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    padding: 0 8vw 3vh 2vw;
+    gap: 30px;
+    align-items: center;
+    z-index: 2;
+}
+
+.services-list {
+    
+    color: red;
+   
+}
+
+.services-list li { 
+    font-size: clamp(20px, 1.7vh, 17px);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.services-list li::before {
+    content: "✓";
+    color: var(--red);
+    margin-right: 12px;
+    font-weight:bold;
+    font-size: 30px;
+}
+
+/* 7. Image Column */
+.image-column {
+    display: flex;
+    justify-content: center;
+}
+
+/* 8. Footer Section */
+.red-footer-bar {
+    background: var(--red); 
+    color: white; 
+    text-align: center;
+    padding: 2.5vh; 
+    font-size: clamp(13px, 1.8vh, 17px);
+    font-weight: bold;
+    border-radius: 50px 50px 0 0;
+    flex-shrink: 0;
+}
+
+/* 9. Responsiveness for Mobile Phones */
+@media (max-width: 768px) {
+    .logo-area {
+        flex-direction: column; /* Stack logo above text on phone */
+        text-align: center;
+    }
+    
+    .logo-text h1 { font-size: 32px; }
+
+    .content-grid {
+        grid-template-columns: 1fr; /* Stack services and image */
+        padding-bottom: 4vh;
+    }
+
+    .image-column {
+        order: -1; /* Image appears above services */
+    }
+
+    .top-slant {
+        width: 85%;
+        height: 12vh;
+    }
+
+    .hero-text h2 {
+        font-size: clamp(28px, 12vw, 30px);
+    }
+}
+.hero-text p{
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.hero-text p strong{
+    color: #003399;
+    font-weight: 400;
+}
+/* 10. Quality Blocks Tag - Left Aligned */
+.block-tag {
+    display: block; /* Allows it to sit on its own line */
+    width: fit-content; /* Only takes up as much space as the text needs */
+    margin: 20px 4vw; /* Matches the 8vw left padding of your hero text */
+    filter: drop-shadow(4px 4px 10px rgba(0,0,0,0.2));
+    z-index: 5;
+}
+
+.tag-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Red Top Section - Rounded Top Left & Right */
+.tag-content h3, 
+.tag-content h4 {
+    background: linear-gradient(to right, var(--red), #b3040f);
+    color: #ffffff;
+    text-align: center;
+    padding: 0 25px;
+    text-transform: uppercase;
+}
+
+.tag-content h3 {
+    padding-top: 12px;
+    font-size: clamp(16px, 2.5vh, 20px);
+    letter-spacing: 1px;
+    border-radius: 20px 20px 0 0; /* Rounded top corners */
+}
+
+.tag-content h4 {
+    padding-bottom: 12px;
+    font-size: clamp(22px, 4vh, 30px);
+    font-weight: 900;
+    line-height: 1;
+}
+
+/* Blue Bottom Section - Sharp Left, Large Round Right */
+.tag-content p {
+    background: linear-gradient(to right, var(--navy), var(--dark-blue));
+    color: #ffffff;
+    text-align: center;
+    padding: 6px 30px;
+    font-size: clamp(10px, 1.5vh, 13px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-top: 2px solid #ffffff; /* The white divider line */
+    
+    /* The "Swoosh" Effect: No radius on left, big radius on bottom-right */
+    border-radius: 0 0 40px 0; 
+    
+    text-transform: uppercase;
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .block-tag {
+        margin: 20px auto; /* Centers the tag on mobile for better balance */
+        text-align: center;
+    }
+}
+
+.services-header {
+    /* Shape and Color */
+    background-color: #e31e24;    /* The vibrant red */
+    border-radius: 12px;         /* Rounded corners for the pill shape */
+    padding: 10px 30px;          /* Vertical and horizontal spacing */
+    display: inline-block;       /* Keeps the box tight around the text */
+    
+    /* Typography */
+    color: #ffffff;              /* Pure white text */
+    font-family: Arial, sans-serif; /* Bold sans-serif font */
+    font-weight: 900;            /* Extra bold */
+    font-size: 1.5rem;           /* Adjust size as needed */
+    letter-spacing: 0.5px;       /* Slight spacing to match the image */
+    
+    /* Optional: Slight border for definition */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.flyer-containers {
+    /* 1. Set the background image */
+    background-image: url('/image/lv_0_20260406212938.jpg');
+
+    /* 2. COVER ensures it fills the entire space, even if it has to crop slightly */
+    /* background-size: cover; */
+
+    /* 3. CENTER the focus so the car and buildings stay visible */
+    background-position: 50%;
+    
+
+    /* 4. OPTIONAL: If you want to manually "zoom" or control the scale:
+       Replace 'cover' with a percentage like '110%' or '150%' 
+       if you want it larger than the container. */
+    background-size: 100%;
+
+    /* 5. Ensure the container has a defined height to show the image */
+    min-height: 100vh; 
+    width: 100%;
+    
+    /* 6. Fix for mobile: prevents the background from jumping when scrolling */
+    background-attachment: scroll; 
+    
+    /* Layout styling */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Add a semi-transparent overlay to ensure your text 
+   is readable over the busy background graphics */
+
+/* Container styling */
+.contact-strip {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffffff, #eaf2ff); /* Light blue gradient */
+    padding: 10px 30px;
+    font-family: Arial, sans-serif;
+    border-bottom: 3px solid #d32f2f; /* Red accent bar */
+}
+
+/* Left Section: Phone */
+.phone-box {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    border-right: 1px solid #ccc; /* The vertical divider line */
+}
+
+/* Red Phone Icon Circle */
+.phone-box i {
+    background-color: #ba0000;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+}
+
+.phone-box span {
+    display: block;
+    color: #002e5b; /* Navy blue */
+    text-transform: uppercase;
+}
+
+.phone-box span:first-of-type {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+
+/* Large Phone Number */
+.phone-box .number {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+/* Right Section: Web/Email */
+.web-details {
+    padding-left: 30px;
+}
+
+.web-details p {
+    margin: 6px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #002e5b;
+    display: flex;
+    align-items: center;
+}
+
+/* Small Navy Icon Circles */
+.web-details i {
+    background-color: #002e5b;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+}
+.phone-box i {
+    /* ... your existing code ... */
+    cursor: pointer; /* Changes mouse to a hand icon */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.phone-box i:hover {
+    transform: scale(1.05); /* Slight grow effect */
+    background-color: #2e25d3; /* Changes to WhatsApp green on hover */
+}
+/* Container for the cluster */
+.circle-images {
+    position: relative;
+    width: 100%;
+    height: 650px; /* Increased height to accommodate the vertical span */
+    margin: 20px auto;
+}
+
+/* Base style for every circle wrapper */
+.circle-images div[class^="circle-c"] {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #fff; /* Thick white border from image */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.circle-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- THE EXACT COORDINATES --- */
+
+.circle-c1 { /* Top Truck Image */
+    width: 210px;
+    height: 210px;
+    top: 0;
+    left: 45px;
+    z-index: 1;
+    border-color: var(--red) !important;
+}
+
+.circle-c2 { /* Middle Left - Drill/Hand */
+    width: 170px;
+    height: 170px;
+    top: 140px;
+    left: 20px;
+    z-index: 5; /* This sits on top of others */
+    border-color: var(--navy) !important;
+}
+
+.circle-c3 { /* Big Center - Construction Site */
+    width: 250px;
+    height: 250px;
+    top: 200px;
+    left: 140px; /* Pushed to the right */
+    z-index: 2;
+    border-color: var(--navy) !important;
+}
+
+.circle-c4 { /* Middle Bottom Left - Solar Panel */
+    width: 190px;
+    height: 190px;
+    top: 340px;
+    left: 0;
+    z-index: 6; /* Overlaps construction site */
+    border-color: var(--red) !important;
+}
+
+.circle-c5 { /* Bottom Center - Solar Worker */
+    width: 180px;
+    height: 180px;
+    top: 450px;
+    left: 120px;
+    z-index: 3;
+    border-color: var(--navy) !important;
+}
+
+.circle-c6 { /* Bottom Right - Row of Cars */
+    width: 160px;
+    height: 160px;
+    top: 480px;
+    left: 260px;
+    z-index: 7; /* Sits on very top */
+    border-color: var(--navy) !important;
+}
+@media (max-width: 768px) {
+    /* 1. Reduce the container height so the section doesn't feel empty */
+    .circle-images {
+        height: 350px; 
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* 2. Shrink all circle wrappers and shift them Right */
+    /* We use a universal selector to move everything right by adding 40-50% to 'left' */
+    .circle-images div[class^="circle-c"] {
+        border-width: 4px; /* Thinner border for smaller circles */
+    }
+    .circle-c1 { width: 130px; height: 130px; top: 0; left: 0%; }
+    .circle-c2 { width: 110px; height: 110px; top: 80px; left: 2%; }
+    .circle-c3 { width: 160px; height: 160px; top: 120px; left: 0%; }
+    .circle-c4 { width: 120px; height: 120px; top: 220px; left: 3%; }
+    .circle-c5 { width: 115px; height: 115px; top: 280px; left: 0%; }
+    .circle-c6 { width: 100px; height: 100px; top: 310px; left: 4%; }
+}
+
+/* Optional: Extra small phones */
+@media (max-width: 480px) {
+    .circle-images {
+        transform: scale(0.5);
+        margin-right: -40px;
+    }
+}
+
+:root {
+  --primary-blue: #003399;
+  --primary-red: #cc0000;
+  --text-grey: #333;
+}
+
+.feature-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  
+  /* SIZING ADJUSTMENTS */
+  max-width: 650px;      /* Reduced from 900px */
+  padding: 10px 25px;    /* Reduced padding */
+  margin: 20px 0;        /* Changed 'auto' to '0' to align left */
+  
+  border-radius: 100px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.icon-circle {
+  /* REDUCED CIRCLE SIZE */
+  width: 45px;           /* Reduced from 70px */
+  height: 45px;          /* Reduced from 70px */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.icon-circle.red { background-color: var(--primary-red); }
+.icon-circle.blue { background-color: var(--primary-blue); }
+
+.icon-circle img {
+  width: 22px;           /* Reduced icon size */
+  height: 22px;
+}
+
+.feature-text {
+  /* REDUCED FONT SIZE */
+  font-size: 0.6rem;     /* Reduced from 0.75rem */
+  line-height: 1.1;
+  font-weight: 900;
+  color: var(--text-grey);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 1px;
+  height: 50px;          /* Reduced height to match smaller banner */
+  background-color: #ddd;
+  margin: 0 5px;
+}
+/* --- RESPONSIVE FIXES FOR ALL PHONES --- */
+
+@media (max-width: 768px) {
+    /* 1. Prevent Horizontal Scrolling */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* 2. Stack the Grid (Text and Images) */
+    .content-grid {
+        grid-template-columns: 1fr; /* Changes from 2 columns to 1 */
+        padding: 0 5vw 5vh 5vw;
+        gap: 20px;
+    }
+
+    .image-column {
+        order: -1; /* Puts the image cluster above the services list on mobile */
+    }
+
+    /* 3. Scale the Circle Cluster */
+    /* Because your circles use fixed pixels and absolute positioning, 
+       scaling the container is the only way to keep the design intact. */
+    .circle-images {
+        height: 420px; /* Reduced height for mobile */
+        transform: scale(0.65); /* Shrinks the entire cluster to 65% size */
+        transform-origin: top center;
+        margin-bottom: -120px; /* Pulls the text up to close the gap created by scaling */
+        left: -10%; /* Adjusts horizontal centering */
+    }
+
+    /* 4. Make Banners and Tags Fluid */
+    .feature-banner, .block-tag {
+        max-width: 95%; 
+        margin: 20px auto; /* Centers them on the screen */
+    }
+
+    .feature-text {
+        font-size: 0.55rem; /* Prevents text from wrapping awkwardly */
+    }
+
+    /* 5. Adjust the Contact Strip (Footer) */
+    .contact-strip {
+        flex-direction: column; /* Stacks Phone and Web info */
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .phone-box {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding-right: 0;
+        padding-bottom: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .phone-box .number {
+        font-size: 30px; /* Scales down the large number for small screens */
+    }
+
+    .web-details {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 6. Logo & Header Tweaks */
+    .logo-area {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-text h1 {
+        font-size: 32px;
+    }
+}
+
+/* Extra small screens
